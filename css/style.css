@@ -1,0 +1,266 @@
+:root{
+    --blanco:#ffffff;
+    --oscuro:#212121;
+    --primario:#ffc107;
+    --secundario: #0097a7;
+    --gris:#757575;
+    --grisclaro: #dfe9f3;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+ .navegacion-principal, .servicios, .formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+*, *:before, *:after {
+box-sizing: inherit;
+}
+body {
+font-size: 16px; /* 1rem = 10px */
+font-family: 'Krub', sans-serif;
+background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 100%);
+
+}
+h1{
+    font-size: 3.8rem;
+}
+h2{
+    font-size: 2.8rem;
+}
+h3{
+    font-size:1.8rem;
+}
+
+h1, h2, h3{
+    text-align: center ;
+}
+
+    .titulo span{
+        font-size: 2rem;
+        
+    }
+.contenedor {
+   max-width: 120rem;
+ margin: 0 auto;
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem ;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold; /** bold = 700 **/
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+.boton:hover{
+    cursor: pointer;
+}
+@media (min-width:768px) {
+    .boton {
+        width:auto
+    
+    }
+}
+
+.sombra{
+box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);;
+background-color: var(--blanco);
+padding: 2rem;
+border-radius: 1rem;
+}
+.contenido-hero, .boton{
+    text-align: center;
+}
+
+/*Utilidades*/
+
+.w-sm-100{
+    width: 100%;
+}
+@media (min-width:768px) {
+    .w-sm-100{
+        width:auto
+    }
+}
+.flex{
+    display: flex;
+}
+.alinear-derecha{
+justify-content: flex-end;
+
+}
+
+/*Navegacion principal*/
+.nav-bg {
+    background-color: var(--secundario);
+}
+.navegacion-principal  {
+   display: flex;
+   flex-direction: column;
+
+}
+.navegacion-principal a{
+    display: block;
+    text-align: center;
+    color:var(--blanco) ;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover{
+    background-color:var(--primario);
+    color:var(--oscuro);      
+}
+@media(min-width:768px){
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    }
+
+    .hero{
+        background-image: url(../Imagenes/hero.jpg) ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 450px;
+        position: relative;
+        margin-bottom: 2rem;
+        
+        
+        } 
+     .contenido-hero{
+            position:absolute;
+            background-color: rgba(0,0 , 0, .7); /**sintaxis anterior**/
+            background-color: rgb(0 0 0 / 70% ); /**sintaxis mas nueva**/
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    
+.contenido-hero h2, 
+.contenido-hero p{
+    color: var(--blanco);
+    
+}
+
+@media (min-width:768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* = : 1fr 1fr 1fr; = :33.3% 33.3% 33.3%*/
+        column-gap: 1rem;
+        
+        
+    }   
+}
+
+.servicio{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.servicio h3{
+color: var(--secundario);
+font-weight: normal; /* normal = 400 */
+}
+.servicio p{
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width:15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*utiliza el valor mas pequeño: el espacio total
+    en la pag es de 1160px, entonces el sistema compara esos 1160px
+    contra los 60rem que pusimos recien, como el mas chico (min) es 60rem,
+    queda 60rem. si la pantalla fuera mas chica (la de un cel), el tamaño
+    del formulario va a pasar a medir el 100% disponible, ya que es menos
+    de 60rem. De esta forma se ahorra la escritura de algunos media queries.*/
+    margin: 0 auto; /*use margin para centrar horizontalmente ya que, como 
+    el padre no es un display flex, no puedo usar justify content para centrar*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+
+}
+
+.formulario fieldset{
+border: none;
+}
+
+@media (min-width:768px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem; /*Separacion columnas*/
+         }
+}
+.campo:nth-child(3), .campo:nth-child(4) /*nth-child indica entre sus parentesis cual de todos
+los elementos con class "campo" queremos modificar. En este caso sería el
+tercero*/ {
+    grid-column: 1 / 3;
+}
+
+.campo{
+ margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.estilo-input /*esta class se llama "input text" en el curso*/ {
+   width: 100%;
+   border: none;
+   padding: 1.5rem;
+   border-radius: .5rem;
+
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+/*Footer*/
+
+.footer{
+    text-align: center;
+}
